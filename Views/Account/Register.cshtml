@@ -1,0 +1,20 @@
+@{
+    ViewData["Title"] = "Create Account — Pulse";
+}
+
+<partial name="_SignupModal" />
+<partial name="_Toast" />
+
+@section Scripts {
+    <script src="~/js/auth.js"></script>
+    <script>
+        // Directly activate signup modal on standalone page load
+        document.addEventListener("DOMContentLoaded", () => {
+            const signup = document.getElementById('pulse-signup');
+            if (signup) {
+                signup.classList.add('is-active');
+                document.body.classList.add('auth-open');
+            }
+        });
+    </script>
+}

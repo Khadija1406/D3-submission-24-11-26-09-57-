@@ -1,0 +1,85 @@
+<section class="auth-view" id="pulse-signup" aria-labelledby="signup-title">
+ <div class="auth-backdrop" aria-hidden="true">
+  <span class="auth-blob one"></span>
+  <span class="auth-blob two"></span>
+  <span class="auth-blob three"></span>
+ </div>
+ <div class="auth-top-actions">
+  <a class="back-home" href="#top"><i class="bi bi-arrow-left me-1"></i> Back to Pulse</a>
+  <a href="#login">Log in <i class="bi bi-arrow-up-right ms-1"></i></a>
+ </div>
+ <div class="auth-shell">
+  <div class="auth-intro">
+   <a class="auth-brand" href="#top">pulse<span class="brand-dot">.</span></a>
+   <span class="auth-kicker"><i class="bi bi-person-plus me-1"></i> CREATE YOUR ACCOUNT</span>
+   <h1>Structured clarity<br/><em>for recurring issues.</em></h1>
+   <p>Register with your name and password to begin tracking problems, monitoring recurrence frequencies, and finding actionable solutions.</p>
+   <div class="auth-benefits">
+    <span><i class="bi bi-arrow-repeat me-1"></i> Understand what repeats</span>
+    <span><i class="bi bi-shield-lock me-1"></i> Account-level security</span>
+    <span><i class="bi bi-check2-circle me-1"></i> Follow your progress</span>
+   </div>
+  </div>
+  <div class="auth-card-wrap">
+   <div class="auth-card signup-card">
+    <div class="auth-card-head">
+     <div class="auth-card-eyebrow">NEW REGISTRATION</div>
+     <h2 id="signup-title">Set up your Pulse account</h2>
+     <p>Enter your details below to activate your personal workspace.</p>
+    </div>
+    <form class="auth-form" data-auth-form="signup" novalidate>
+     <div class="auth-field">
+      <label for="signup-name">Display Name (Username)</label>
+      <div class="auth-input-wrap">
+       <span class="field-icon"><i class="bi bi-person-fill"></i></span>
+       <input class="auth-input" id="signup-name" name="name" type="text" placeholder="e.g. Alex" autocomplete="name" required/>
+      </div>
+      <small class="text-muted" style="font-size:11px;">This name will be displayed in your greeting and dashboard.</small>
+     </div>
+     <div class="auth-field">
+      <label for="signup-email">Email address</label>
+      <div class="auth-input-wrap">
+       <span class="field-icon"><i class="bi bi-envelope-fill"></i></span>
+       <input class="auth-input" id="signup-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required/>
+      </div>
+     </div>
+     <div class="auth-field">
+      <div class="d-flex justify-content-between align-items-center">
+       <label for="signup-password">Create password</label>
+       <span class="text-muted" style="font-size:12px;">Min. 8 characters</span>
+      </div>
+      <div class="auth-input-wrap">
+       <span class="field-icon"><i class="bi bi-lock-fill"></i></span>
+       <input class="auth-input" id="signup-password" name="password" type="password" placeholder="Minimum 8 characters" autocomplete="new-password" minlength="8" required/>
+       <button class="auth-password-toggle" type="button" aria-label="Toggle password visibility" data-toggle-password="signup-password">
+        <span class="eye-on"><i class="bi bi-eye"></i></span>
+        <span class="eye-off"><i class="bi bi-eye-slash"></i></span>
+       </button>
+      </div>
+      <div class="auth-pwd-feedback mt-1" id="signup-pwd-feedback">
+       <small class="text-muted"><i class="bi bi-shield-check me-1"></i> Minimum 8 characters required</small>
+      </div>
+     </div>
+     <div class="auth-field">
+      <label for="signup-confirm">Confirm password</label>
+      <div class="auth-input-wrap">
+       <span class="field-icon"><i class="bi bi-shield-lock-fill"></i></span>
+       <input class="auth-input" id="signup-confirm" name="confirm" type="password" placeholder="Re-type your password" autocomplete="new-password" minlength="8" required/>
+       <button class="auth-password-toggle" type="button" aria-label="Toggle password visibility" data-toggle-password="signup-confirm">
+        <span class="eye-on"><i class="bi bi-eye"></i></span>
+        <span class="eye-off"><i class="bi bi-eye-slash"></i></span>
+       </button>
+      </div>
+     </div>
+     <label class="auth-check"><input type="checkbox" required/> I agree to the terms of account privacy and security.</label>
+     <button class="auth-submit" type="submit">
+      <span>Create my account</span>
+      <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i>
+     </button>
+     <div class="auth-toast" role="status" aria-live="polite"></div>
+    </form>
+    <p class="auth-switch mt-3">Already have a Pulse account? <a href="#login">Log in</a></p>
+   </div>
+  </div>
+ </div>
+</section>

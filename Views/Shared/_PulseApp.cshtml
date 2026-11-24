@@ -1,0 +1,102 @@
+<div class="pa" id="pulse-app">
+ <aside class="pa-side">
+  <a class="pa-brand" href="#top">pulse<span>.</span></a>
+  <nav class="pa-nav">
+   <a href="#dashboard" data-nav="dashboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="7" height="9" rx="2"/><rect x="14" y="3" width="7" height="5" rx="2"/><rect x="14" y="12" width="7" height="9" rx="2"/><rect x="3" y="16" width="7" height="5" rx="2"/></svg>Dashboard</a>
+   <a href="#add-problem" data-nav="add-problem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>Add a problem</a>
+   <a href="#problems" data-nav="problems"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M8 6h13M8 12h13M8 18h13"/><circle cx="3.5" cy="6" r="1"/><circle cx="3.5" cy="12" r="1"/><circle cx="3.5" cy="18" r="1"/></svg>My problems</a>
+   <a href="#alerts" data-nav="alerts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 8 3 8H3s3-1 3-8"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg>Alerts <span class="pa-badge" data-alert-count>0</span></a>
+  </nav>
+  <div class="pa-side-card"><b>✳ Little reminder</b>When something happens again, log it as an occurrence — that's how Pulse spots patterns.</div>
+  <div class="pa-user">
+   @{
+       var initialUser = ViewData["UserDisplayName"]?.ToString() ?? "Friend";
+       var initialChar = !string.IsNullOrWhiteSpace(initialUser) ? initialUser[0].ToString().ToUpper() : "F";
+   }
+   <span class="pa-avatar" data-user-initial>@initialChar</span>
+   <div>
+    <b data-user-name>@initialUser</b><br/>
+    <small style="color:var(--p-muted)">Free space</small>
+   </div>
+   <a href="#top" data-logout>Log out</a>
+  </div>
+ </aside>
+
+ <div>
+  <div class="pa-mobile-bar"><a class="pa-brand" style="padding:0;font-size:22px" href="#top">pulse<span>.</span></a><nav><a href="#dashboard" data-nav="dashboard">Home</a><a href="#add-problem" data-nav="add-problem">Add</a><a href="#problems" data-nav="problems">List</a><a href="#alerts" data-nav="alerts">Alerts</a></nav></div>
+  <div class="pa-main">
+
+   <!-- DASHBOARD -->
+   <section class="pa-view" data-view="dashboard">
+    <div class="pa-top">
+     <div>
+      <div class="pa-kicker">✳ <span data-today></span></div>
+      <h1>Hello, <em id="greeting-name" data-user-name>@initialUser</em>. Here's your pulse.</h1>
+      <script>window.__INITIAL_USER__ = "@Html.Raw(initialUser != "Friend" ? initialUser : "")";</script>
+      <p>A calm overview of everything you're tracking.</p>
+     </div>
+     <a class="pa-btn pa-btn-pink" href="#add-problem">＋ Add a problem</a>
+    </div>
+    <div class="pa-stats">
+     <div class="pa-stat bg-rose"><div class="ic">◎</div><b data-stat="total">0</b><span>Problems tracked</span></div>
+     <div class="pa-stat bg-butter"><div class="ic">☀</div><b data-stat="active">0</b><span>Still active</span></div>
+     <div class="pa-stat bg-mint"><div class="ic">✓</div><b data-stat="resolved">0</b><span>Resolved</span></div>
+     <div class="pa-stat bg-sky"><div class="ic">↻</div><b data-stat="occ">0</b><span>Occurrences logged</span></div>
+    </div>
+    <div class="pa-grid">
+     <div class="pa-card"><h3>Occurrences, last 7 days</h3><p class="sub">How often things came up this week.</p><div class="pa-bars" data-week-bars></div><div class="pa-bar-labels" data-week-labels></div></div>
+     <div class="pa-card"><h3>By category</h3><p class="sub">Where your problems live.</p><div class="pa-donut-wrap"><div class="pa-donut" data-donut><b data-donut-total>0</b></div><ul class="pa-legend" data-legend></ul></div></div>
+    </div>
+    <div class="pa-grid">
+     <div class="pa-card"><h3>Recently updated</h3><p class="sub">Tap a problem to see its full history.</p><div data-recent></div></div>
+     <div class="pa-card"><h3>Needs attention</h3><p class="sub">Problems that happened more than 3 times.</p><div data-dash-alerts></div></div>
+    </div>
+   </section>
+
+   <!-- ADD PROBLEM -->
+   <section class="pa-view" data-view="add-problem">
+    <div class="pa-top"><div><div class="pa-kicker">✿ New entry</div><h1>What's been <em>bothering</em> you?</h1><p>Give it a name and a little context. You can add repeat occurrences later.</p></div></div>
+    <form class="pa-form-grid" id="pa-add-form" novalidate>
+     <div class="pa-card">
+      <div class="pa-field" data-f="title"><label for="pa-title">Problem title</label><input class="pa-input" id="pa-title" maxlength="80" placeholder="e.g. Wi-Fi keeps dropping in the evening"/><div class="pa-hint"><span>Short and specific works best.</span><span data-count-title>0/80</span></div><div class="pa-err">Please give your problem a title (at least 3 characters).</div></div>
+      <div class="pa-field" data-f="desc"><label for="pa-desc">Description</label><textarea class="pa-input" id="pa-desc" maxlength="600" placeholder="What happens? When does it usually happen? Anything you've already tried?"></textarea><div class="pa-hint"><span>More detail helps the assistant give better suggestions.</span><span data-count-desc>0/600</span></div><div class="pa-err">Please add a short description (at least 10 characters).</div></div>
+      <div class="pa-field" data-f="cat"><span class="pa-lbl">Category</span><div class="pa-cats" data-cats></div><div class="pa-err">Choose a category.</div></div>
+      <div class="pa-two">
+       <div class="pa-field" data-f="date"><label for="pa-date">Date it happened</label><input class="pa-input" type="date" id="pa-date"/><div class="pa-err">Pick a date that isn't in the future.</div></div>
+       <div class="pa-field"><span class="pa-lbl">Status</span><div class="pa-seg" data-seg="status"><button type="button" data-v="active" class="on">Active</button><button type="button" data-v="progress">In progress</button><button type="button" data-v="resolved">Resolved</button></div></div>
+      </div>
+      <div class="pa-field"><span class="pa-lbl">How much is it affecting you?</span><div class="pa-seg" data-seg="impact"><button type="button" data-v="Low">Low</button><button type="button" data-v="Medium" class="on">Medium</button><button type="button" data-v="High">High</button></div></div>
+      <div class="pa-actions"><button type="reset" class="pa-btn pa-btn-ghost">Clear</button><button type="submit" class="pa-btn pa-btn-pink">Save problem →</button></div>
+     </div>
+     <div class="pa-preview">
+      <div class="pa-card"><h3>Live preview</h3><p class="sub">This is how it will appear in your list.</p>
+       <div class="pv"><span class="pill c-technical" data-pv-cat>Category</span> <span class="pill st-active" data-pv-status>Active</span><h4 data-pv-title>Your problem title</h4><p data-pv-desc>Your description will appear here.</p></div>
+       <ul class="pa-tips"><li>✳ <span>Log each repeat as an <b>occurrence</b> — not a new problem.</span></li><li>♡ <span>On the 4th occurrence Pulse raises a <b>recurring alert</b>.</span></li><li>✦ <span>The assistant uses your history to suggest next steps.</span></li></ul>
+      </div>
+     </div>
+    </form>
+   </section>
+
+   <!-- PROBLEMS LIST -->
+   <section class="pa-view" data-view="problems">
+    <div class="pa-top"><div><div class="pa-kicker">◎ Your records</div><h1>My <em>problems</em></h1><p>Search, filter and open any problem to see its history.</p></div><a class="pa-btn pa-btn-pink" href="#add-problem">＋ Add a problem</a></div>
+    <div class="pa-toolbar"><div class="pa-search"><span>⌕</span><input class="pa-input" placeholder="Search problems…" data-search/></div><select class="pa-input" style="width:auto;background:var(--p-paper)" data-sort><option value="recent">Most recent</option><option value="most">Most occurrences</option><option value="az">A → Z</option></select></div>
+    <div class="pa-toolbar"><div class="pa-chips" data-filter-cat></div><div class="pa-chips" data-filter-status style="margin-left:auto"></div></div>
+    <div class="pa-plist" data-plist></div>
+   </section>
+
+   <!-- ALERTS -->
+   <section class="pa-view" data-view="alerts">
+    <div class="pa-top"><div><div class="pa-kicker">♡ Smart alerts</div><h1>Things that keep <em>coming back</em></h1><p>Pulse alerts you when a problem happens more than three times.</p></div></div>
+    <div class="pa-card" data-alerts-full></div>
+   </section>
+
+   <!-- DETAIL -->
+   <section class="pa-view" data-view="detail">
+    <a class="pa-back" href="#problems">← Back to my problems</a>
+    <div data-detail></div>
+   </section>
+
+  </div>
+ </div>
+</div>

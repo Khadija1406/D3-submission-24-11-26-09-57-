@@ -1,0 +1,70 @@
+<section class="auth-view" id="pulse-login" aria-labelledby="login-title">
+ <div class="auth-backdrop" aria-hidden="true">
+  <span class="auth-blob one"></span>
+  <span class="auth-blob two"></span>
+  <span class="auth-blob three"></span>
+ </div>
+ <div class="auth-top-actions">
+  <a class="back-home" href="#top"><i class="bi bi-arrow-left me-1"></i> Back to Pulse</a>
+  <a href="#signup">Create account <i class="bi bi-arrow-up-right ms-1"></i></a>
+ </div>
+ <div class="auth-shell">
+  <div class="auth-intro">
+   <a class="auth-brand" href="#top">pulse<span class="brand-dot">.</span></a>
+   <span class="auth-kicker"><i class="bi bi-shield-check me-1"></i> SECURE ACCOUNT ACCESS</span>
+   <h1>Welcome back to<br/><em>your workspace.</em></h1>
+   <p>Your problem history, recurring patterns, and attempted solutions are safely stored. Sign in to review your progress.</p>
+   <div class="auth-benefits">
+    <span><i class="bi bi-card-checklist me-1"></i> Track problems</span>
+    <span><i class="bi bi-arrow-repeat me-1"></i> Detect patterns</span>
+    <span><i class="bi bi-graph-up-arrow me-1"></i> Measure progress</span>
+   </div>
+  </div>
+  <div class="auth-card-wrap">
+   <div class="auth-card">
+    <div class="auth-card-head">
+     <div class="auth-card-eyebrow">AUTHENTICATION</div>
+     <h2 id="login-title">Log in to your account</h2>
+     <p>Only registered accounts may access the workspace.</p>
+    </div>
+    <form class="auth-form" data-auth-form="login" novalidate>
+     <div class="auth-field">
+      <label for="login-email">Username or Email address</label>
+      <div class="auth-input-wrap">
+       <span class="field-icon"><i class="bi bi-person-fill"></i></span>
+       <input class="auth-input" id="login-email" name="email" type="text" placeholder="username or you@example.com" autocomplete="username email" required/>
+      </div>
+     </div>
+     <div class="auth-field">
+      <div class="d-flex justify-content-between align-items-center">
+       <label for="login-password">Password</label>
+       <span class="text-muted" style="font-size:12px;">Min. 8 characters</span>
+      </div>
+      <div class="auth-input-wrap">
+       <span class="field-icon"><i class="bi bi-lock-fill"></i></span>
+       <input class="auth-input" id="login-password" name="password" type="password" placeholder="Enter password (minimum 8 characters)" autocomplete="current-password" minlength="8" required/>
+       <button class="auth-password-toggle" type="button" aria-label="Toggle password visibility" data-toggle-password="login-password">
+        <span class="eye-on"><i class="bi bi-eye"></i></span>
+        <span class="eye-off"><i class="bi bi-eye-slash"></i></span>
+       </button>
+      </div>
+      <div class="auth-pwd-feedback mt-1" id="login-pwd-feedback">
+       <small class="text-muted"><i class="bi bi-shield-check me-1"></i> Minimum 8 characters required</small>
+      </div>
+     </div>
+     <div class="auth-form-row">
+      <label class="auth-check"><input type="checkbox" name="remember"/> Keep me logged in</label>
+      <a class="auth-inline-link" href="#login" data-demo-link="reset">Forgot password?</a>
+     </div>
+     <button class="auth-submit" type="submit">
+      <span>Log in to Pulse</span>
+      <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i>
+     </button>
+     <div class="auth-toast" role="status" aria-live="polite"></div>
+    </form>
+    <div class="auth-divider">SECURE SYSTEM</div>
+    <p class="auth-switch">Don't have an account yet? <a href="#signup">Create an account</a></p>
+   </div>
+  </div>
+ </div>
+</section>

@@ -1,0 +1,20 @@
+@{
+    ViewData["Title"] = "Log In — Pulse";
+}
+
+<partial name="_LoginModal" />
+<partial name="_Toast" />
+
+@section Scripts {
+    <script src="~/js/auth.js"></script>
+    <script>
+        // Directly activate login modal on standalone page load
+        document.addEventListener("DOMContentLoaded", () => {
+            const login = document.getElementById('pulse-login');
+            if (login) {
+                login.classList.add('is-active');
+                document.body.classList.add('auth-open');
+            }
+        });
+    </script>
+}

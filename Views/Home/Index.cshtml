@@ -1,0 +1,54 @@
+@{
+    ViewData["Title"] = "Pulse — Every problem has a pattern";
+}
+
+<main data-tsd-source="/src/routes/index.tsx:43:5">
+    @* Navigation Header *@
+    <partial name="_Header" />
+
+    @* Hero Section with Interactive Visuals *@
+    <partial name="_Hero" />
+
+    @* Value Proposition Strip *@
+    <partial name="_PromiseStrip" />
+
+    @* How It Works Workflow *@
+    <partial name="_HowItWorks" />
+
+    @* Problem Domains & Categories *@
+    <partial name="_YourWorld" />
+
+    @* Pattern Detection & Insights Demo *@
+    <partial name="_WhyPulse" />
+
+    @* Core Product Features *@
+    <partial name="_Features" />
+
+    @* Progress Tracking Visualizer *@
+    <partial name="_Progress" />
+
+    @* Privacy, Security & Trust *@
+    <partial name="_Privacy" />
+
+    @* Closing Call To Action *@
+    <partial name="_Closing" />
+
+    @* Site Footer *@
+    <partial name="_Footer" />
+</main>
+
+@* Identity Modals (Custom ASP.NET Core Identity with AJAX) *@
+<partial name="_LoginModal" />
+<partial name="_SignupModal" />
+
+@* Interactive Problem Tracker Application (Dapper-backed DB) *@
+<partial name="_PulseApp" />
+
+@* Toast Notification Container *@
+<partial name="_Toast" />
+
+@section Scripts {
+    <script src="~/js/pattern-switch.js"></script>
+    <script src="~/js/auth.js"></script>
+    <script src="~/js/pulse-app.js"></script>
+}
